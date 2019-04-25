@@ -20,9 +20,33 @@ def spider():
 
     house_basic_item3 = soup.select('.house-basic-item3>li')
 
-    str1 = []
-    for str in house_basic_item3[0].strings:
-        print(str)
+    community = trim(connect(house_basic_item3[0].strings))  # 小区名称
+
+    main = soup.select('.area>.main')
+    area = trim(main[0].string)  # 面积
+
+    region = trim(connect(house_basic_item3[1].strings))  # 地区
+
+
+def connect(string):
+    """
+    连接字符串
+    :param string:
+    :return:
+    """
+    strings = []
+    for i in string:
+        strings.append(i)
+    return ''.join(strings)
+
+
+def trim(string):
+    """
+    字符串去空格空行
+    :param string:
+    :return:
+    """
+    return string.replace(' ', '').replace('\n', '')
 
 
 if __name__ == '__main__':

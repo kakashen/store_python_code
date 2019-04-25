@@ -5,11 +5,11 @@ import re
 
 
 def save():
-    f = open("urls_neutral.txt")
+    f = open("urls_drawings.txt")
     line = f.readline()
     for i in range(1, 1000):
 
-        path = r"sex" + str(i) + ".jpg"
+        path = r"image/drawings" + str(i) + ".jpg"
         try:
             data = request.urlretrieve(line, path)
             line = f.readline()
