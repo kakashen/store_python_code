@@ -25,9 +25,10 @@ def get_urls():
             f.write(href + '\n')
 
         num = i['logr'].find('@postdate:') + 10  # 时间 ms
+        post_date = i['logr'][num:num + 13]
         # print(i['logr'][num:num+13])
 
-        data = {'link': href, 'sum': total, 'post_date': num//1000}
+        data = {'link': href, 'sum': total, 'post_date': int(post_date) // 1000}
         ret = requests.post('http://www.xitou.online/api/python', data)
 
         if ret:
