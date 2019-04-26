@@ -21,6 +21,9 @@ def get_urls():
         total = connect(i.select('.sum')[0].strings)  # 总价
         href = i.find('a')['href']  # url 地址
         # print(href)
+        with open("href.csv", "a+", encoding="utf-8") as f:
+            f.write(href + '\n')
+
         num = i['logr'].find('@postdate:') + 10  # 时间 ms
         # print(i['logr'][num:num+13])
 
@@ -35,7 +38,10 @@ def get_urls():
 
 def spider(url):
     # url = 'https://rizhao.58.com/ershoufang/37886495714975x.shtml'
-    response = requests.get(url)
+    try:
+        response = requests.get(url)
+    except:
+        return
     # print(response.text)
     with open("1.html", "w", encoding="utf-8") as f:
         f.write(response.text)
