@@ -17,6 +17,7 @@ def get_urls():
 
     li = soup.select('.house-list-wrap')[0].find_all('li')
 
+    hrefs = []
     for i in li:
         total = connect(i.select('.sum')[0].strings)  # 总价
         href = i.find('a')['href']  # url 地址
@@ -32,9 +33,13 @@ def get_urls():
         ret = requests.post('http://www.xitou.online/api/python', data)
 
         if ret:
-            spider(href)
-            print(href)
+            hrefs.append(href)
+            # spider(href)
+            # print(href)
         time.sleep(1)
+
+    for href in hrefs:
+        spider(href)
 
 
 def spider(url):
