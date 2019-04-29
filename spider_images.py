@@ -9,7 +9,7 @@ def save():
     line = f.readline()
     for i in range(1, 1000):
 
-        path = r"image/drawings" + str(i) + ".jpg"
+        path = r"images/drawings" + str(i) + ".jpg"
         try:
             data = request.urlretrieve(line, path)
             line = f.readline()
