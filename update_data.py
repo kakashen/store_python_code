@@ -1,5 +1,5 @@
 import requests
-import spider_2
+import spider_58
 import json
 import time
 
@@ -12,7 +12,7 @@ def update_data():
     j = json.loads(links)
     for i in j:
         link = i['link']
-        spider_2.spider(link)
+        spider_58.spider(link)
         time.sleep(1)
 
 
