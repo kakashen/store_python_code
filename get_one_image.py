@@ -1,18 +1,20 @@
 # -*-coding:utf8-*-
-import datetime
+import os
 from urllib import request
-import re
 
 
-def save():
-    line = 'http://miabyss.com/images/top02/visual04.jpg'
-    path = r"images/visual04.jpg"
+def save(line):
+    filename = os.path.basename(line)
+
+    path = r"images/" + filename
+
+    opener = request.build_opener()
+    opener.addheaders = [('User-agent', 'Mozilla/5.0')]
+
+    request.install_opener(opener)
     try:
         request.urlretrieve(line, path)
         print('succeed:' + line)
+        return 1
     except:
-        print('fail:' + line)
-
-
-if __name__ == "__main__":
-    save()
+        return 0
