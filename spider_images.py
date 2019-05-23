@@ -5,9 +5,9 @@ from urllib import request
 
 
 def save():
-    f = open("urls_drawings.txt")
+    f = open("urls_hentai.txt")
 
-    for i in range(1, 1000):
+    for i in range(1, 10):
         line = f.readline()
         filename = os.path.basename(line).replace('\n', '')
         path = r"images/" + filename
